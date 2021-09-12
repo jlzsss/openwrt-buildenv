@@ -6,6 +6,8 @@
 name: Build Openwrt Buildenv
 
 on:
+  repository_dispatch:
+  workflow_dispatch:
   deployment:
   push:
 
