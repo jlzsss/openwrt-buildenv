@@ -38,3 +38,6 @@ gperf
 wget
 swig
 rsync
+nginx
+curl
+tar
