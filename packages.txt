@@ -8,6 +8,7 @@ git
 libncurses5-dev
 libz-dev
 patch
+python3
 python2.7
 unzip
 zlib1g-dev
@@ -16,6 +17,7 @@ libc6-dev-i386
 subversion
 flex
 uglifyjs
+git-core
 gcc-multilib
 p7zip
 p7zip-full
@@ -36,8 +38,7 @@ g++-multilib
 antlr3
 gperf
 wget
+curl
 swig
 rsync
-nginx
-curl
-tar
+ccache
