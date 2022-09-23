@@ -20,20 +20,16 @@ jobs:
     - name: Enable experimental features
       run: |
         echo '{
-          "experimental": true,
-          "storage-driver": "overlay2",
-          "storage-opts": [
-             "overlay2.size=80G"
-            ]
+          "experimental": true
         }' | sudo tee /etc/docker/daemon.json
         sudo service docker restart
 
-    #- name: Disk Free Spaces
-    #  run: |
-    #    sudo service docker stop
-    #    dd if=/dev/zero of=data bs=1G count=0 seek=30
-    #    dd if=/dev/zero of=metadata bs=1G count=0 seek=10
-    #    sudo service docker start
+    - name: Disk Free Spaces
+      run: |
+        sudo service docker stop
+        dd if=/dev/zero of=/var/lib/docker/devicemapper/devicemapper/data bs=1G count=0 seek=100
+        dd if=/dev/zero of=/var/lib/docker/devicemapper/devicemapper/metadata bs=1G count=0 seek=50
+        sudo service docker start
 
     - name: Publish to Registry
       uses: elgohr/Publish-Docker-Github-Action@master
