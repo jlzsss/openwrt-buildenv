@@ -27,8 +27,8 @@ jobs:
     - name: Disk Free Spaces
       run: |
         sudo service docker stop
-        sudo dd if=/dev/zero of=/var/lib/docker/devicemapper/devicemapper/data bs=1G count=0 seek=100
-        sudo dd if=/dev/zero of=/var/lib/docker/devicemapper/devicemapper/metadata bs=1G count=0 seek=50
+        dd if=/dev/zero of=data bs=1G count=0 seek=35
+        dd if=/dev/zero of=metadata bs=1G count=0 seek=30
         sudo service docker start
 
     - name: Publish to Registry
