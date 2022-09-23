@@ -8,7 +8,7 @@ git
 libncurses5-dev
 libz-dev
 patch
-python3.5
+python3
 python2.7
 unzip
 zlib1g-dev
@@ -46,3 +46,4 @@ rsync
 gawk
 apt-transport-https
 ca-certificates
+ccache
