@@ -21,9 +21,10 @@ jobs:
       run: |
         echo '{
           "experimental": true,
+          "storage-driver": "overlay",
           "storage-opts": [
-          "overlay.size=80G"
-           ]
+             "overlay.size=80G"
+            ]
         }' | sudo tee /etc/docker/daemon.json
         sudo service docker restart
 
