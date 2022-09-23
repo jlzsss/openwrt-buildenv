@@ -22,7 +22,7 @@ jobs:
         echo '{
           "experimental": true,
           "storage-opts": [
-          "overlay2.size=50G"
+          "overlay.size=80G"
            ]
         }' | sudo tee /etc/docker/daemon.json
         sudo service docker restart
