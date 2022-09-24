@@ -43,6 +43,6 @@ jobs:
       env:
         DOCKER_BUILDKIT: 1
       with:
-        name: jlzsss/openwrt-buildenv
+        name: jfsss/openwrt-buildenv
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
