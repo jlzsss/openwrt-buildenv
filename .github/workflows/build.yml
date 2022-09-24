@@ -26,10 +26,18 @@ jobs:
 
     - name: Disk Free Spaces
       run: |
-        sudo service docker stop
-        dd if=/dev/zero of=data bs=1G count=0 seek=28
-        dd if=/dev/zero of=metadata bs=1G count=0 seek=27
-        sudo service docker start
+        # dd if=/dev/zero of=data bs=1G count=0 seek=28
+        # dd if=/dev/zero of=metadata bs=1G count=0 seek=27
+        echo '{
+          ExecStart=/usr/bin/dockerd --graph=/work/docker_data 
+          --storage-driver devicemapper 
+          --storage-opt dm.loopdatasize=200G 
+          --storage-opt dm.loopmetadatasize=50G 
+          --storage-opt dm.fs=ext4 
+          --storage-opt dm.basesize=100G 
+          -H fd:// --containerd=/run/containerd/containerd.sock
+        }' | sudo tee /usr/lib/systemd/system/docker.service
+        sudo service docker restart
 
     - name: Publish to Registry
       uses: elgohr/Publish-Docker-Github-Action@master
