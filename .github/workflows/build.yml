@@ -26,8 +26,6 @@ jobs:
 
     - name: Disk Free Spaces
       run: |
-        # dd if=/dev/zero of=data bs=1G count=0 seek=28
-        # dd if=/dev/zero of=metadata bs=1G count=0 seek=27
         echo '{
           ExecStart=/usr/bin/dockerd --graph=/work/docker_data 
           --storage-driver devicemapper 
@@ -37,6 +35,7 @@ jobs:
           --storage-opt dm.basesize=100G 
           -H fd:// --containerd=/run/containerd/containerd.sock
         }' | sudo tee /usr/lib/systemd/system/docker.service
+        sudo systemctl daemon-reload
         sudo service docker restart
 
     - name: Publish to Registry
