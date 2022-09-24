@@ -31,13 +31,13 @@ jobs:
         }' | sudo tee /etc/docker/daemon.json
         sudo service docker restart
 
-    - name: Disk Free Spaces
-      run: |
-        sudo sed -i "/ExecStart/d" /usr/lib/systemd/system/docker.service
-        sudo sed -i "/ExecReload/i ExecStart=/usr/bin/dockerd --data-root=/root/data/docker --storage-driver devicemapper -H fd:// --containerd=/var/run/containerd/containerd.sock" /usr/lib/systemd/system/docker.service
-        sudo cat /usr/lib/systemd/system/docker.service
-        sudo systemctl daemon-reload
-        sudo systemctl restart docker.service
+    #- name: Disk Free Spaces
+    #  run: |
+    #    sudo sed -i "/ExecStart/d" /usr/lib/systemd/system/docker.service
+    #    sudo sed -i "/ExecReload/i ExecStart=/usr/bin/dockerd --data-root=/root/data/docker --storage-driver devicemapper -H fd:// --containerd=/var/run/containerd/containerd.sock" /usr/lib/systemd/system/docker.service
+    #    sudo cat /usr/lib/systemd/system/docker.service
+    #    sudo systemctl daemon-reload
+    #    sudo systemctl restart docker.service
 
     - name: Publish to Registry
       uses: elgohr/Publish-Docker-Github-Action@master
