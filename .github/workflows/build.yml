@@ -16,6 +16,12 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
     - uses: actions/checkout@master
+    
+    - name: Delete workflow runs
+      uses: GitRML/delete-workflow-runs@main
+      with:
+        retain_days: 1
+        keep_minimum_runs: 10
 
     - name: Enable experimental features
       run: |
