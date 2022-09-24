@@ -30,19 +30,19 @@ jobs:
         }' | sudo tee /etc/docker/daemon.json
         sudo service docker restart
 
-    #- name: Disk Free Spaces
-    #  run: |
-    #    sudo sed -i "/ExecStart/d" /usr/lib/systemd/system/docker.service
-    #    sudo sed -i "/ExecReload/i ExecStart=/usr/bin/dockerd --data-root /root/data/docker --storage-driver devicemapper --storage-opt dm.loopdatasize=80G --storage-opt dm.loopmetadatasize=40G --storage-opt dm.fs=ext4 --storage-opt dm.basesize=40G -H fd:// --containerd=/var/run/containerd/containerd.sock" /usr/lib/systemd/system/docker.service
-    #    sudo cat /usr/lib/systemd/system/docker.service
-    #    sudo systemctl daemon-reload
-    #    sudo systemctl restart docker.service
+    - name: Disk Free Spaces
+      run: |
+        sudo sed -i "/ExecStart/d" /usr/lib/systemd/system/docker.service
+        sudo sed -i "/ExecReload/i ExecStart=/usr/bin/dockerd --graph=/root/data/docker --storage-driver devicemapper --storage-opt dm.loopdatasize=80G --storage-opt dm.loopmetadatasize=20G --storage-opt dm.fs=ext4 --storage-opt dm.basesize=40G -H fd:// --containerd=/var/run/containerd/containerd.sock" /usr/lib/systemd/system/docker.service
+        sudo cat /usr/lib/systemd/system/docker.service
+        sudo systemctl daemon-reload
+        sudo systemctl restart docker.service
 
     - name: Publish to Registry
       uses: elgohr/Publish-Docker-Github-Action@master
       env:
         DOCKER_BUILDKIT: 1
       with:
-        name: jfsss/openwrt-buildenv
+        name: jlzsss/openwrt-buildenv
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
