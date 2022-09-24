@@ -30,7 +30,7 @@ jobs:
           ExecStart=/usr/bin/dockerd  -H fd:// --containerd=/var/run/containerd/containerd.sock -s=devicemapper --storage-opt dm.basesize=80G --storage-opt dm.loopmetadatasize=40G
         }' | sudo tee /usr/lib/systemd/system/docker.service
         sudo systemctl daemon-reload
-        sudo systemctl docker restart
+        sudo systemctl restart docker 
 
     - name: Publish to Registry
       uses: elgohr/Publish-Docker-Github-Action@master
