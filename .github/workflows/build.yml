@@ -21,7 +21,7 @@ jobs:
       uses: GitRML/delete-workflow-runs@main
       with:
         retain_days: 1
-        keep_minimum_runs: 10
+        keep_minimum_runs: 5
 
     - name: Enable experimental features
       run: |
@@ -33,7 +33,7 @@ jobs:
     - name: Disk Free Spaces
       run: |
         sudo sed -i "/ExecStart/d" /usr/lib/systemd/system/docker.service
-        sudo sed -i "/ExecReload/i ExecStart=/usr/bin/dockerd --graph=/root/data/docker --storage-driver devicemapper --storage-opt dm.loopdatasize=80G --storage-opt dm.loopmetadatasize=20G --storage-opt dm.fs=ext4 --storage-opt dm.basesize=40G -H fd:// --containerd=/var/run/containerd/containerd.sock" /usr/lib/systemd/system/docker.service
+        sudo sed -i "/ExecReload/i ExecStart=/usr/bin/dockerd --graph=/var/lib/docker --storage-driver devicemapper --storage-opt dm.loopdatasize=80G --storage-opt dm.loopmetadatasize=20G --storage-opt dm.fs=ext4 --storage-opt dm.basesize=40G -H fd:// --containerd=/var/run/containerd/containerd.sock" /usr/lib/systemd/system/docker.service
         sudo cat /usr/lib/systemd/system/docker.service
         sudo systemctl daemon-reload
         sudo systemctl restart docker.service
