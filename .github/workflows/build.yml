@@ -27,7 +27,7 @@ jobs:
     - name: Disk Free Spaces
       run: |
         echo '{
-          ExecStart=/usr/bin/dockerd --graph=/work/docker_data 
+          ExecStart=/usr/bin/dockerd --data-root=/work/docker_data 
           --storage-driver devicemapper 
           --storage-opt dm.loopdatasize=200G 
           --storage-opt dm.loopmetadatasize=50G 
