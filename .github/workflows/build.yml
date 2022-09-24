@@ -27,6 +27,7 @@ jobs:
     - name: Disk Free Spaces
       run: |
         sudo service docker stop
+        sudo mkdir -p /root/data/docker
         sudo mv /var/lib/docker /root/data/docker
         ln -s /root/data/docker /var/lib/docker
         sudo service docker start
