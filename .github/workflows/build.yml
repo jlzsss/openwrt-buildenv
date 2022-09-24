@@ -28,7 +28,7 @@ jobs:
       run: |
         sudo service docker stop
         dd if=/dev/zero of=data bs=1G count=0 seek=28
-        dd if=/dev/zero of=metadata bs=1G count=0 seek=25
+        dd if=/dev/zero of=metadata bs=1G count=0 seek=20
         sudo service docker start
 
     - name: Publish to Registry
