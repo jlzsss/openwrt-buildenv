@@ -27,7 +27,7 @@ jobs:
     - name: Disk Free Spaces
       run: |
         sudo service docker stop
-        dd if=/dev/zero of=data bs=1G count=0 seek=20
+        dd if=/dev/zero of=data bs=1G count=0 seek=23
         dd if=/dev/zero of=metadata bs=1G count=0 seek=20
         sudo service docker start
 
