@@ -36,6 +36,7 @@ jobs:
           -H fd:// --containerd /var/run/containerd/containerd.sock
         }' | sudo tee /usr/lib/systemd/system/docker.service
         sudo systemctl daemon-reload
+        sudo systemctl status docker.service
         sudo service docker restart
 
     - name: Publish to Registry
