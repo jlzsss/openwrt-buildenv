@@ -35,6 +35,7 @@ jobs:
           --storage-opt dm.basesize=100G 
           -H fd:// --containerd /var/run/containerd/containerd.sock
         }' | sudo tee /usr/lib/systemd/system/docker.service
+        sudo cat /usr/lib/systemd/system/docker.service
         sudo service docker restart
 
     - name: Publish to Registry
