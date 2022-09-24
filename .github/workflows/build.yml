@@ -29,7 +29,7 @@ jobs:
         sudo service docker stop
         sudo mkdir -p /root/data/docker
         sudo mv /var/lib/docker /root/data/docker
-        ln -s /root/data/docker /var/lib/docker
+        sudo ln -s /root/data/docker /var/lib/docker
         sudo service docker start
         # sudo sed -i "/ExecStart/d" /usr/lib/systemd/system/docker.service
         # sudo sed -i "/ExecReload/i ExecStart=/usr/bin/dockerd -H fd:// --containerd /var/run/containerd/containerd.sock --storage-opt size=20G" /usr/lib/systemd/system/docker.service
