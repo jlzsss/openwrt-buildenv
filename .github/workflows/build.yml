@@ -33,7 +33,7 @@ jobs:
           --storage-opt dm.loopmetadatasize=50G 
           --storage-opt dm.fs=ext4 
           --storage-opt dm.basesize=100G 
-          -H fd:// --containerd=/run/containerd/containerd.sock
+          -H fd://
         }' | sudo tee /usr/lib/systemd/system/docker.service
         sudo systemctl daemon-reload
         sudo service docker restart
