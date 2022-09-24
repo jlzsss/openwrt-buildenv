@@ -13,7 +13,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     steps:
     - uses: actions/checkout@master
 
@@ -26,13 +26,13 @@ jobs:
 
     - name: Disk Free Spaces
       run: |
-       docker info
+       sudo cat /usr/lib/systemd/system/docker.service
        # echo '{
        #   ExecStart=/usr/bin/dockerd  -H fd:// --containerd=/run/containerd/containerd.sock -s=devicemapper --storage-opt dm.basesize=80G --storage-opt dm.loopmetadatasize=40G
        # }' | sudo tee /usr/lib/systemd/system/docker.service
        # sudo systemctl daemon-reload
-        sudo systemctl status docker.service
-        sudo service docker restart
+       sudo systemctl status docker.service
+       sudo service docker restart
 
     - name: Publish to Registry
       uses: elgohr/Publish-Docker-Github-Action@master
