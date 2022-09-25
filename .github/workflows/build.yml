@@ -27,7 +27,7 @@ jobs:
       run: |
         echo '{
           "experimental": true，
-          "storage-driver": "devicemapper",
+          "storage-driver": "overlay2",
           "storage-opts": [
           # "dm.thinpooldev=/dev/mapper/docker-thinpool",
           # "dm.use_deferred_removal=ture",
