@@ -27,9 +27,9 @@ jobs:
       run: |
         echo '{
           "experimental": true，
-          "storage-driver": "devicemapper",
+          "storage-driver": "overlay",
           "storage-opts": [
-          "dm.basesize=40G"
+          "overlay.size=20G"
            ]
         }' | sudo tee /etc/docker/daemon.json
         sudo systemctl daemon-reload
