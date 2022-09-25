@@ -48,4 +48,3 @@ jobs:
         name: jlzsss/openwrt-buildenv
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
-        buildoptions: "-t 817f70:f92d4e54583344019633757cc8083f4c"
