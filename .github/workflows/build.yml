@@ -26,17 +26,24 @@ jobs:
     - name: Enable experimental features
       run: |
         echo '{
-          "experimental": true,
+          "experimental": true，
+          "storage-driver": "devicemapper",
+          "storage-opts": [
+          "dm.thinpooldev=/dev/mapper/docker-thinpool",
+          "dm.use_deferred_removal=ture",
+          "dm.use_deferred_deletion=true",
+          "dm.basesize=40G"
+           ]
         }' | sudo tee /etc/docker/daemon.json
         sudo service docker restart
 
-    - name: Disk Free Spaces
-      run: |
-        sudo sed -i "/ExecStart/d" /usr/lib/systemd/system/docker.service
-        sudo sed -i "/ExecReload/i ExecStart=/usr/bin/dockerd --data-root=/root/data/docker --storage-driver devicemapper -H fd:// --containerd=/var/run/containerd/containerd.sock --storage-opt dm.basesize=40G --storage-opt dm.loopdatasize=80G --storage-opt dm.loopmetadatasize=25G --storage-opt dm.fs=ext4" /usr/lib/systemd/system/docker.service
-        sudo cat /usr/lib/systemd/system/docker.service
-        sudo systemctl daemon-reload
-        sudo systemctl restart docker.service
+    #- name: Disk Free Spaces
+    #  run: |
+    #    sudo sed -i "/ExecStart/d" /usr/lib/systemd/system/docker.service
+    #    sudo sed -i "/ExecReload/i ExecStart=/usr/bin/dockerd --data-root=/root/data/docker --storage-driver devicemapper -H fd:// --containerd=/var/run/containerd/containerd.sock --storage-opt dm.basesize=40G --storage-opt dm.loopdatasize=80G --storage-opt dm.loopmetadatasize=25G --storage-opt dm.fs=ext4" /usr/lib/systemd/system/docker.service
+    #    sudo cat /usr/lib/systemd/system/docker.service
+    #    sudo systemctl daemon-reload
+    #    sudo systemctl restart docker.service
 
     - name: Publish to Registry
       uses: elgohr/Publish-Docker-Github-Action@master
