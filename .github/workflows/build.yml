@@ -29,9 +29,9 @@ jobs:
           "experimental": true，
           "storage-driver": "devicemapper",
           "storage-opts": [
-          "dm.thinpooldev=/dev/mapper/docker-thinpool",
-          "dm.use_deferred_removal=ture",
-          "dm.use_deferred_deletion=true",
+          # "dm.thinpooldev=/dev/mapper/docker-thinpool",
+          # "dm.use_deferred_removal=ture",
+          # "dm.use_deferred_deletion=true",
           "dm.basesize=40G"
            ]
         }' | sudo tee /etc/docker/daemon.json
