@@ -40,7 +40,7 @@ jobs:
         sudo systemctl restart docker.service
 
     - name: Publish to Registry
-      uses: elgohr/Publish-Docker-Github-Action@master
+      uses: minddocdev/docker-publish-action@master
       env:
         DOCKER_BUILDKIT: 1
       with:
