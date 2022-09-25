@@ -35,7 +35,7 @@ jobs:
     - name: Disk Free Spaces
       run: |
         sudo sed -i "/ExecStart/d" /usr/lib/systemd/system/docker.service
-        sudo sed -i "/ExecReload/i ExecStart=/usr/bin/dockerd --data-root=/home/root/docker --storage-driver devicemapper -H fd:// --containerd=/var/run/containerd/containerd.sock --storage-opt dm.basesize=45G" /usr/lib/systemd/system/docker.service
+        sudo sed -i "/ExecReload/i ExecStart=/usr/bin/dockerd --storage-driver devicemapper -H fd:// --containerd=/var/run/containerd/containerd.sock --storage-opt dm.basesize=100G --storage-opt dm.loopdatasize=200G --storage-opt dm.loopmetadatasize=60G --storage-opt dm.fs=ext4" /usr/lib/systemd/system/docker.service
         sudo cat /usr/lib/systemd/system/docker.service
         sudo systemctl daemon-reload
         sudo systemctl restart docker.service
