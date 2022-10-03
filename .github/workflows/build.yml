@@ -26,7 +26,8 @@ jobs:
     - name: Enable experimental features
       run: |
         echo '{
-          "registry-mirrors": ["https://hub-mirror.c.163.com/"],
+          "max-concurrent-downloads": 5,
+          "max-concurrent-uploads": 5,
           "experimental": true
         }' | sudo tee /etc/docker/daemon.json
         sudo systemctl daemon-reload
