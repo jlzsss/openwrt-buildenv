@@ -37,13 +37,7 @@ device-tree-compiler
 g++-multilib
 antlr3
 gperf
-
-tar
 wget
 curl
-nginx
+swig
 rsync
-gawk
-apt-transport-https
-ca-certificates
-ccache
