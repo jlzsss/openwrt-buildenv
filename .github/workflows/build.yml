@@ -26,8 +26,6 @@ jobs:
     - name: Enable experimental features
       run: |
         echo '{
-          "max-concurrent-downloads": 5,
-          "max-concurrent-uploads": 5,
           "experimental": true
         }' | sudo tee /etc/docker/daemon.json
         sudo systemctl daemon-reload
