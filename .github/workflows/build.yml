@@ -44,7 +44,7 @@ jobs:
         sudo systemctl restart docker.service
 
     - name: Publish to Registry
-      uses: elgohr/Publish-Docker-Github-Action@v4
+      uses: elgohr/Publish-Docker-Github-Action@v5
       env:
         DOCKER_BUILDKIT: 1
       with:
