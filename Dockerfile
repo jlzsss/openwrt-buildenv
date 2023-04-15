@@ -5,4 +5,4 @@ RUN useradd -ms /bin/bash builder \
   && /bin/bash -c 'echo "builder ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers.d/99_sudo_include_file'
 USER builder
 WORKDIR /workdir
-RUN --mount=type=bind,source=.,target=/,cd / && ./initenv.sh
+RUN --mount=type=bind,source=.,target=/ cd / && ./initenv.sh
