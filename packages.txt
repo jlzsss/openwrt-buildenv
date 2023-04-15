@@ -4,7 +4,7 @@ binutils
 bzip2
 gawk
 gettext
-git
+git-core
 libncurses5-dev
 libz-dev
 patch
